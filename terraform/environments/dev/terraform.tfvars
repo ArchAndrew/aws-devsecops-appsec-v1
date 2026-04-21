@@ -17,3 +17,11 @@ private_app_cidrs = [
   "10.10.11.0/24",
   "10.10.12.0/24"
 ]
+
+kubernetes_version = "1.30"
+
+node_instance_types = ["t3.medium"]
+
+desired_size = 2
+min_size     = 1
+max_size     = 2
