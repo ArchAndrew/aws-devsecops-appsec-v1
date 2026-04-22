@@ -1,3 +1,4 @@
-index=aws_vpcflow
-| stats count by srcaddr, dstaddr, dstport, action
-| where count > 1000
+action=ACCEPT OR action=REJECT
+| stats count by srcaddr, dstaddr, dstport, protocol, action
+| where count >= 100
+| sort - count

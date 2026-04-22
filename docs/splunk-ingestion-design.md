@@ -29,3 +29,10 @@
 - admin endpoint abuse
 - unusual IAM activity
 - suspicious network traffic
+
+
+## JSON logs:
+{"event_type":"auth_failure","message":"Invalid credentials","username":"admin","src_ip":"10.10.1.74"}
+
+## Live Fields:
+event_type, message, timestamp, username, src_ip, user_agent

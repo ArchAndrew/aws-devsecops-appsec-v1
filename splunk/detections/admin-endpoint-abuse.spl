@@ -1,3 +1,4 @@
-index=k8s_app "/api/admin"
-| stats count by src_ip, user
-| where count > 10
+event_type=auth_attempt username=admin
+| stats count by src_ip, user_agent
+| where count >= 5
+| sort - count

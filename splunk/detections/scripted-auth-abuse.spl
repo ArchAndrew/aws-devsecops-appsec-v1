@@ -1,0 +1,4 @@
+event_type=auth_failure user_agent="curl/*"
+| stats count by src_ip, username, user_agent
+| where count >= 5
+| sort - count

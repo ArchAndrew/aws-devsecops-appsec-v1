@@ -1,3 +1,4 @@
-index=k8s_app "login" "invalid credentials"
-| stats count by src_ip, user
-| where count > 5
+event_type=auth_failure
+| stats count by src_ip, username
+| where count >= 5
+| sort - count

@@ -87,3 +87,39 @@ Add screenshots for:
 ## License
 This project is licensed under the MIT License.
 # trigger scan
+
+## Detection and Validation Highlights
+- Integrated Trivy into GitHub Actions to fail the build when HIGH or CRITICAL vulnerabilities are detected in the container image
+- Enabled Amazon GuardDuty for continuous AWS-native threat detection
+- Added structured JSON authentication logging to the application
+- Simulated repeated failed login attempts and captured corresponding `auth_attempt` and `auth_failure` events from the live Kubernetes deployment
+
+## Detection Validation Cont.
+
+The application emits structured JSON security events for authentication attempts, successes, and failures. During testing, repeated failed login attempts were simulated against the live ALB endpoint, producing events with:
+
+- `event_type`
+- `timestamp`
+- `username`
+- `src_ip`
+- `user_agent`
+
+This enables downstream detection use cases such as brute-force activity, privileged account targeting, and scripted abuse.
+
+## Detection Engineering
+
+#Brute Force Detection
+- Logic: >5 failed login attempts from same IP in 1 minute
+- Fields: event_type, src_ip, timestamp
+- Purpose: Detect credential stuffing
+
+## Admin Targeting Detection
+- Logic: Repeated attempts against privileged account
+- Purpose: Identify targeted attacks
+
+## Auth Spike Detection
+- Logic: Sudden increase in login attempts
+- Purpose: Detect scanning or attack bursts
+
+
+
