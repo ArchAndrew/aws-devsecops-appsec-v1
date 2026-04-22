@@ -1,1 +1,3 @@
-
+index=aws_cloudtrail
+(eventName=CreateUser OR eventName=AttachRolePolicy OR eventName=PutRolePolicy)
+| stats count by userIdentity.arn, eventName

@@ -1,1 +1,3 @@
-
+index=k8s_app "/api/admin"
+| stats count by src_ip, user
+| where count > 10

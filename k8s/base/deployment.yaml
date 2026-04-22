@@ -13,6 +13,7 @@ spec:
       labels:
         app: backend
     spec:
+      serviceAccountName: backend-sa
       containers:
         - name: backend
           image: 144618662969.dkr.ecr.us-east-1.amazonaws.com/aws-devsecops-appsec-v1-backend:latest
@@ -20,4 +21,7 @@ spec:
             - containerPort: 8080
           env:
             - name: APP_SECRET
-              value: "supersecurelocalkey"
+              valueFrom:
+                secretKeyRef:
+                  name: backend-secret
+                  key: APP_SECRET

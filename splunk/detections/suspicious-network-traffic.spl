@@ -1,1 +1,3 @@
-
+index=aws_vpcflow
+| stats count by srcaddr, dstaddr, dstport, action
+| where count > 1000
