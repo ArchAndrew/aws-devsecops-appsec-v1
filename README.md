@@ -1,4 +1,4 @@
-# AWS DevSecOps Application Security Platform (V1)
+# AWS EKS DevSecOps AppSec platform with real-time auth telemetry, detection logic, and SIEM integration
 
 ## Executive Summary
 Designed and deployed a production-style AWS DevSecOps application security platform using Terraform and Amazon EKS, featuring secure containerized workloads, ALB ingress, IRSA-based controller permissions, Kubernetes secret handling, and a security-focused delivery workflow.
