@@ -12,15 +12,24 @@ users = {
     "admin": "admin123"
 }
 
+from utils.logger import log_event
+
 @app.route("/health")
 def health():
     return {"status": "ok"}, 200
 
 @app.route("/login", methods=["POST"])
 def login():
-    data = request.json
+    data = request.json or {}
     username = data.get("username")
     password = data.get("password")
+
+    log_event(
+        "auth_attempt",
+        "Login attempt detected",
+        username=username,
+        src_ip=request.remote_addr
+    )
 
     if users.get(username) == password:
         token = jwt.encode({
@@ -28,7 +37,21 @@ def login():
             "exp": datetime.datetime.utcnow() + datetime.timedelta(hours=1)
         }, SECRET, algorithm="HS256")
 
+        log_event(
+            "auth_success",
+            "Login successful",
+            username=username,
+            src_ip=request.remote_addr
+        )
+
         return {"token": token}
+
+    log_event(
+        "auth_failure",
+        "Invalid credentials",
+        username=username,
+        src_ip=request.remote_addr
+    )
 
     return {"error": "invalid credentials"}, 401
 
