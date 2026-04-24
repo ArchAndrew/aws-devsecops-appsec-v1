@@ -1,4 +1,4 @@
-event_type=auth_attempt username=admin
-| stats count by src_ip, user_agent
-| where count >= 5
-| sort - count
+index=main service="kubernetes-api"
+| search user=admin
+| stats count by src_ip
+| where count > 3

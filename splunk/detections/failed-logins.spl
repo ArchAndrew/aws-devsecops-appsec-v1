@@ -1,4 +1,3 @@
-event_type=auth_failure
-| stats count by src_ip, username
-| where count >= 5
-| sort - count
+index=main event_type=auth_failure
+| stats count by user, src_ip
+| sort -count

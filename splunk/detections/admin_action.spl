@@ -1,0 +1,3 @@
+index=main event_type=admin_action user=admin
+| stats count by src_ip
+| where count > 3
