@@ -4,7 +4,7 @@
 
 ## 🧠 Think About It
 
-Modern cloud-native applications are often deployed quickly—but not securely.
+Modern cloud-native applications are often deployed quickly, but not securely.
 
 Security gaps typically occur in two places:
 
@@ -264,14 +264,16 @@ Internet
 
 ---
 
-## 📂 Repository Structure
+## 📁 Repository Structure
 
-app/backend/ # Application code
-terraform/ # Infrastructure modules
-k8s/base/ # Kubernetes manifests
-docs/ # Documentation
-splunk/ # Detection + dashboards
-.github/workflows/ # CI/CD pipelines
+```bash
+app/backend/        # Application code
+terraform/          # Infrastructure modules
+k8s/base/           # Kubernetes manifests
+docs/               # Documentation
+splunk/             # Detection + dashboards
+.github/workflows/  # CI/CD pipelines
+```
 
 
 ---
