@@ -64,22 +64,23 @@ This project demonstrates how to integrate **preventative security controls (Dev
 ### Key Panels
 
 #### 🔴 Auth Failures
-`<insert image of auth failures dashboard here>`
+<img src= "https://github.com/ArchAndrew/aws-devsecops-appsec-v1/blob/main/docs/screenshots/Auth_Failures.png" style="width:700px;">
 
 #### 🟢 Auth Success
-`<insert image of auth success metric here>`
+<img src= "https://github.com/ArchAndrew/aws-devsecops-appsec-v1/blob/main/docs/screenshots/Auth_Success.png" style="width:700px;">
 
 #### 📤 Data Exfiltration
-`<insert image of data exfiltration bar chart here>`
+<img src= "https://github.com/ArchAndrew/aws-devsecops-appsec-v1/blob/main/docs/screenshots/Data_Exfiltration.png" style="width:700px;">
 
 #### 🔐 IAM Anomalies
-`<insert image of IAM anomalies chart here>`
+<img src= "https://github.com/ArchAndrew/aws-devsecops-appsec-v1/blob/main/docs/screenshots/IAM_Anomalies.png" style="width:700px;">
 
 #### 🌐 Network Activity
-`<insert image of network activity line chart here>`
+<img src= "https://github.com/ArchAndrew/aws-devsecops-appsec-v1/blob/main/docs/screenshots/Network_Activity.png" style="width:700px;">
 
 #### ⚡ Event Spike Detection
-`<insert image of spike detection table here>`
+<img src= "https://github.com/ArchAndrew/aws-devsecops-appsec-v1/blob/main/docs/screenshots/Event_Spike_Detection.png" style="width:700px;">
+
 
 ---
 
