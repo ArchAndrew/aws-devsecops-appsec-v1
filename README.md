@@ -11,11 +11,14 @@ Security gaps typically occur in two places:
 - **Before deployment** (vulnerable container images)
 - **After deployment** (lack of runtime visibility and detection)
 
-This project demonstrates how to integrate **preventative security controls (DevSecOps)** with **real-time detection (SOC visibility)** in a Kubernetes environment.
+This project demonstrates how to integrate **preventive security controls (DevSecOps)** with **real-time detection (SOC visibility)** in a Kubernetes environment.
 
 ---
 
 ## 🏗️ Architecture Overview (High-Level)
+
+
+GitHub → GitHub Actions → Trivy → ECR → Terraform → EKS → ALB → Flask App → Structured Logs → Splunk HEC → SOC Dashboard
 
 - **Docker** → Packages the application securely  
 - **GitHub Actions** → Automates CI/CD and security checks  
@@ -58,8 +61,18 @@ This project demonstrates how to integrate **preventative security controls (Dev
 
 ## 📊 SOC Dashboard (Splunk)
 
+:warning: All attack activity was simulated in a controlled lab environment using mock telemetry.
+
 📄 **Full Dashboard (Recommended View):**  
 👉 [View Full SOC Dashboard (PDF)](https://github.com/ArchAndrew/aws-devsecops-appsec-v1/blob/main/docs/screenshots/soc-dashboard.pdf)
+
+| Detection | Signal | Purpose |
+|---|---|---|
+| Brute Force | Repeated auth failures | Detect credential attacks |
+| IAM Anomaly | Same user from multiple IPs | Detect suspicious identity activity |
+| Data Exfiltration | High outbound bytes | Detect abnormal data movement |
+| Admin Abuse | Privileged Kubernetes actions | Detect risky admin behavior |
+| Event Spike | Sudden event volume increase | Detect bursts/scanning |
 
 ### Key Panels
 
