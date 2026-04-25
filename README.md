@@ -1,8 +1,8 @@
-# 🔥 AWS EKS DevSecOps AppSec Pipeline with Splunk SOC Detection
+# AWS EKS DevSecOps AppSec Pipeline with Splunk SOC Detection
 
 ---
 
-## 🧠 Problem Statement
+## 🧠 Think About It
 
 Modern cloud-native applications are often deployed quickly—but not securely.
 
