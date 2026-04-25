@@ -1,125 +1,315 @@
-# AWS EKS DevSecOps AppSec platform with real-time auth telemetry, detection logic, and SIEM integration
+# 🔥 AWS EKS DevSecOps AppSec Pipeline with Splunk SOC Detection
 
-## Executive Summary
-Designed and deployed a production-style AWS DevSecOps application security platform using Terraform and Amazon EKS, featuring secure containerized workloads, ALB ingress, IRSA-based controller permissions, Kubernetes secret handling, and a security-focused delivery workflow.
+---
 
-## Business Problem
-Modern cloud-native applications need more than infrastructure deployment. They require secure image handling, controlled ingress, least-privilege access, repeatable infrastructure, and clear visibility into operational and security events. This project demonstrates how to build and expose a containerized application in AWS while applying practical DevSecOps and platform security principles.
+## 🧠 Problem Statement
 
-## Architecture Overview
+Modern cloud-native applications are often deployed quickly—but not securely.
+
+Security gaps typically occur in two places:
+
+- **Before deployment** (vulnerable container images)
+- **After deployment** (lack of runtime visibility and detection)
+
+This project demonstrates how to integrate **preventative security controls (DevSecOps)** with **real-time detection (SOC visibility)** in a Kubernetes environment.
+
+---
+
+## 🏗️ Architecture Overview (High-Level)
+
+- **Docker** → Packages the application securely  
+- **GitHub Actions** → Automates CI/CD and security checks  
+- **Trivy** → Scans container images for vulnerabilities  
+- **Amazon ECR** → Stores container images  
+- **Amazon EKS** → Runs the application in Kubernetes  
+- **AWS Load Balancer Controller (IRSA)** → Secure ingress  
+- **Splunk** → Ingests logs and powers detection dashboards  
+
+---
+
+## 🔄 Pipeline Flow
+
+1. Code is pushed to GitHub  
+2. GitHub Actions builds the Docker image  
+3. Trivy scans the image for HIGH/CRITICAL vulnerabilities  
+4. Image is pushed to Amazon ECR  
+5. Terraform provisions AWS infrastructure (VPC + EKS)  
+6. Kubernetes deploys the application  
+7. Application emits structured JSON logs  
+8. Logs are ingested into Splunk  
+9. Detection rules trigger SOC alerts and dashboards  
+
+---
+
+## 🔐 Security Controls
+
+### Pre-Deployment
+- Trivy image scanning in CI/CD  
+- Build fails on HIGH/CRITICAL vulnerabilities  
+
+### Runtime
+- Auth failure detection  
+- IAM anomaly detection  
+- Data exfiltration monitoring  
+- Admin activity tracking  
+- Event spike detection  
+
+---
+
+## 📊 SOC Dashboard (Splunk)
+
+📄 **Full Dashboard (Recommended View):**  
+👉 [View Full SOC Dashboard (PDF)](<INSERT_PDF_LINK_HERE>)
+
+### Key Panels
+
+#### 🔴 Auth Failures
+`<insert image of auth failures dashboard here>`
+
+#### 🟢 Auth Success
+`<insert image of auth success metric here>`
+
+#### 📤 Data Exfiltration
+`<insert image of data exfiltration bar chart here>`
+
+#### 🔐 IAM Anomalies
+`<insert image of IAM anomalies chart here>`
+
+#### 🌐 Network Activity
+`<insert image of network activity line chart here>`
+
+#### ⚡ Event Spike Detection
+`<insert image of spike detection table here>`
+
+---
+
+## 🎭 Attack Simulations
+
+The following attack scenarios were simulated against the live environment:
+
+- Repeated failed login attempts (brute force)
+- Multi-IP login attempts (credential stuffing behavior)
+- Privileged admin actions (cluster role + pod access)
+- Data exfiltration patterns (simulated outbound activity)
+
+All activity was captured and visualized in Splunk.
+
+---
+
+## 💰 Cost Optimization
+
+All AWS infrastructure was **fully destroyed after testing** to prevent unnecessary costs.
+
+- ✔ EKS cluster terminated  
+- ✔ NAT Gateway removed  
+- ✔ Load balancer deleted  
+- ✔ No running compute resources  
+
+---
+
+## 🚀 Key Takeaways
+
+- Built a full DevSecOps pipeline from scratch  
+- Integrated security into CI/CD workflows  
+- Implemented real-time detection and monitoring  
+- Simulated real-world attack scenarios  
+- Designed a SOC-style dashboard for investigation  
+
+---
+
+# 📚 Technical Deep Dive
+
+---
+
+## 🏗️ Detailed Architecture
+
 This environment includes:
-- Dockerized Flask application served by Gunicorn
-- Amazon ECR for image storage
-- Terraform-managed VPC and EKS
-- Kubernetes Deployment, Service, and Ingress
-- AWS Load Balancer Controller using IRSA best practice
-- Public ALB endpoint for application access
-- Kubernetes Secret for sensitive runtime configuration
 
-## Request Flow
-Internet  
-→ AWS Application Load Balancer  
-→ Kubernetes Ingress  
-→ Kubernetes Service  
-→ EKS Pods  
-→ Gunicorn  
+- Dockerized Flask application served by Gunicorn  
+- Amazon ECR for image storage  
+- Terraform-managed VPC and EKS  
+- Kubernetes Deployment, Service, and Ingress  
+- AWS Load Balancer Controller using IRSA  
+- Public ALB endpoint for access  
+- Kubernetes Secret for runtime configuration  
+
+---
+
+## 🔄 Request Flow
+
+Internet
+→ AWS Application Load Balancer
+→ Kubernetes Ingress
+→ Kubernetes Service
+→ EKS Pods
+→ Gunicorn
 → Flask application
 
-## Key Security Controls
-- **Least privilege for controller access:** AWS Load Balancer Controller uses IRSA rather than broad node-role permissions
-- **Private workload placement:** EKS worker nodes run in private subnets
-- **Container hardening:** application runs in a containerized environment with Gunicorn instead of the Flask development server
-- **Secret handling:** `APP_SECRET` is injected through a Kubernetes Secret rather than hardcoded in the deployment manifest
-- **Infrastructure as Code:** core infrastructure is provisioned through Terraform for repeatability and change control
-- **Ingress standardization:** ALB-managed ingress provides a controlled public entry point
+---
 
-## What I Built
-- Containerized backend application
-- ECR image publishing flow
-- Terraform VPC module
-- Terraform EKS module
-- Kubernetes Deployment / Service / Ingress
-- IRSA-backed ALB controller installation
-- Public health endpoint validation
-- Security documentation and deployment guide
-- Initial CI security workflows
+## 🧱 Security Controls Matrix
 
-## Validation
-The application was validated at multiple stages:
-- local Docker health check
-- EKS pod health validation
-- Kubernetes service port-forward validation
-- public ALB `/health` validation
+| Control Area            | Implementation                                      | Purpose |
+|------------------------|-----------------------------------------------------|--------|
+| Identity               | IRSA for ALB Controller                             | Limits IAM permissions |
+| Network Segmentation   | Public + Private subnets                            | Reduces exposure |
+| Container Runtime      | Gunicorn (non-root)                                 | Hardens execution |
+| Secret Handling        | Kubernetes Secrets                                  | Removes hardcoded secrets |
+| Image Security         | Trivy scanning in CI                                | Detects vulnerabilities |
+| Infrastructure as Code | Terraform                                           | Ensures repeatability |
+| Ingress Security       | ALB Controller                                      | Controlled entry point |
+| Availability           | Multi-AZ nodes                                      | Improves resilience |
+| Observability          | Splunk ingestion                                    | Enables detection |
 
-## Repository Structure
-- `app/backend/` – application source and container build files
-- `terraform/` – Terraform environment and reusable modules
-- `k8s/base/` – Kubernetes manifests
-- `docs/` – architecture, deployment, and security documentation
-- `splunk/` – observability design and detection content
-- `.github/workflows/` – CI/CD and security automation
+---
 
-## Documentation
-- [Deployment Guide](docs/deployment-guide.md)
-- [Security Controls Matrix](docs/security-controls-matrix.md)
-- [Threat Model](docs/threat-model.md)
-- [Splunk Ingestion Design](docs/splunk-ingestion-design.md)
-- [Code Review Notes](docs/code-review-notes.md)
+## 🧠 Threat Model
 
-## Current State
-This V1 build demonstrates a working public application on AWS EKS with secure ingress and foundational platform security controls. Future improvements include deeper observability integration, AWS Secrets Manager integration, and additional workload-level controls.
+### Assets
+- Application container  
+- ECR image  
+- EKS cluster  
+- IAM roles  
+- Kubernetes secrets  
+- Terraform code  
+- ALB ingress  
 
-## Future Enhancements
-- Replace Kubernetes Secret with AWS Secrets Manager via External Secrets
-- Add richer structured application logging and Splunk ingestion
-- Add Kubernetes network policy enforcement validation
-- Add autoscaling and workload tuning
-- Expand CI/CD with Terraform plan and deployment automation
+### Entry Points
+- Public ALB endpoint  
+- CI/CD pipeline  
+- AWS APIs  
+- Kubernetes API  
 
-## Screenshots
-Add screenshots for:
-- EKS nodes in `Ready`
-- ALB ingress address
-- successful public `/health` response
-- Terraform apply outputs
-- GitHub Actions security workflow results
+### Key Risks
+- Credential misuse  
+- Vulnerable images  
+- Excessive IAM permissions  
+- Public exposure  
+- Lack of visibility  
 
-## License
-This project is licensed under the MIT License.
-# trigger scan
+### Mitigations
+- IRSA-based permissions  
+- Private subnet workloads  
+- ECR-controlled image flow  
+- Trivy scanning  
+- Kubernetes Secrets  
+- Terraform-managed infrastructure  
 
-## Detection and Validation Highlights
-- Integrated Trivy into GitHub Actions to fail the build when HIGH or CRITICAL vulnerabilities are detected in the container image
-- Enabled Amazon GuardDuty for continuous AWS-native threat detection
-- Added structured JSON authentication logging to the application
-- Simulated repeated failed login attempts and captured corresponding `auth_attempt` and `auth_failure` events from the live Kubernetes deployment
+---
 
-## Detection Validation Cont.
+## 📥 Splunk Ingestion Design
 
-The application emits structured JSON security events for authentication attempts, successes, and failures. During testing, repeated failed login attempts were simulated against the live ALB endpoint, producing events with:
+### Ingestion Scope
+- Application logs  
+- Kubernetes events  
+- AWS CloudTrail  
+- ALB access logs  
+- VPC Flow Logs  
 
-- `event_type`
-- `timestamp`
-- `username`
-- `src_ip`
-- `user_agent`
+### Indexes
+- aws_cloudtrail  
+- aws_alb  
+- aws_vpcflow  
+- k8s_app  
+- k8s_platform  
+- cicd_security  
 
-This enables downstream detection use cases such as brute-force activity, privileged account targeting, and scripted abuse.
+### Sourcetypes
+- aws:cloudtrail  
+- aws:alb:accesslogs  
+- aws:vpcflow  
+- kube:container:app  
+- kube:events  
+- trivy:json  
 
-## Detection Engineering
+---
 
-#Brute Force Detection
-- Logic: >5 failed login attempts from same IP in 1 minute
-- Fields: event_type, src_ip, timestamp
-- Purpose: Detect credential stuffing
+## 🔍 Detection Engineering
 
-## Admin Targeting Detection
-- Logic: Repeated attempts against privileged account
-- Purpose: Identify targeted attacks
+### Brute Force Detection
+- Logic: >5 failed logins from same IP within 1 minute  
+- Purpose: Detect credential stuffing  
 
-## Auth Spike Detection
-- Logic: Sudden increase in login attempts
-- Purpose: Detect scanning or attack bursts
+### Admin Targeting
+- Logic: Repeated attempts against privileged account  
+- Purpose: Identify targeted attacks  
+
+### Auth Spike Detection
+- Logic: Sudden increase in login attempts  
+- Purpose: Detect scanning or attack bursts  
+
+---
+
+## 🧪 CI/CD Security Validation
+
+- Trivy integrated into GitHub Actions  
+- Pipeline fails on HIGH/CRITICAL vulnerabilities  
+- Image scanning enforced before deployment  
+
+---
+
+## 🧾 Code Review Notes
+
+### Issues Identified
+- Flask dev server replaced with Gunicorn  
+- Hardcoded secret removed  
+- Image migrated to ECR  
+- IRSA-based ingress implemented  
+
+### Remaining Improvements
+- Integrate AWS Secrets Manager  
+- Add network policy enforcement  
+- Improve structured logging  
+- Expand CI/CD for Terraform  
+
+---
+
+## 📂 Repository Structure
+
+app/backend/ # Application code
+terraform/ # Infrastructure modules
+k8s/base/ # Kubernetes manifests
+docs/ # Documentation
+splunk/ # Detection + dashboards
+.github/workflows/ # CI/CD pipelines
 
 
+---
 
+## 🧪 Deployment Guide (Condensed)
+
+### Local
+```bash
+create .env
+docker compose up --build
+```
+
+### Infrastructure
+```bash
+terraform init
+terraform apply
+```
+
+### Deploy
+```bash
+kubectl apply -f k8s/
+```
+
+### Verify
+```bash
+kubectl get pods
+kubectl get ingress
+curl /health
+```
+
+### 📌 Final Note
+
+This project simulates a real-world DevSecOps + SOC environment, combining:
+
+- Secure application delivery
+- Cloud-native infrastructure
+- Runtime detection engineering
+- Operational visibility
+
+
+thee_architect_was_here
