@@ -59,7 +59,7 @@ This project demonstrates how to integrate **preventative security controls (Dev
 ## 📊 SOC Dashboard (Splunk)
 
 📄 **Full Dashboard (Recommended View):**  
-👉 [View Full SOC Dashboard (PDF)](<INSERT_PDF_LINK_HERE>)
+👉 [View Full SOC Dashboard (PDF)](aws-devsecops-appsec-v1/docs/screenshots/splunk-dashboard-1.pdf)
 
 ### Key Panels
 
