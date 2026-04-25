@@ -64,22 +64,22 @@ This project demonstrates how to integrate **preventative security controls (Dev
 ### Key Panels
 
 #### 🔴 Auth Failures
-<img src= "https://github.com/ArchAndrew/aws-devsecops-appsec-v1/blob/main/docs/screenshots/Auth_Failures.png" style="width:700px;">
+<img src= "https://github.com/ArchAndrew/aws-devsecops-appsec-v1/blob/main/docs/screenshots/Auth_Failures.png" style="width:1000px;">
 
 #### 🟢 Auth Success
-<img src= "https://github.com/ArchAndrew/aws-devsecops-appsec-v1/blob/main/docs/screenshots/Auth_Success.png" style="width:700px;">
+<img src= "https://github.com/ArchAndrew/aws-devsecops-appsec-v1/blob/main/docs/screenshots/Auth_Success.png" style="width:1000px;">
 
 #### 📤 Data Exfiltration
-<img src= "https://github.com/ArchAndrew/aws-devsecops-appsec-v1/blob/main/docs/screenshots/Data_Exfiltration.png" style="width:700px;">
+<img src= "https://github.com/ArchAndrew/aws-devsecops-appsec-v1/blob/main/docs/screenshots/Data_Exfiltration.png" style="width:1000px;">
 
 #### 🔐 IAM Anomalies
-<img src= "https://github.com/ArchAndrew/aws-devsecops-appsec-v1/blob/main/docs/screenshots/IAM_Anomalies.png" style="width:700px;">
+<img src= "https://github.com/ArchAndrew/aws-devsecops-appsec-v1/blob/main/docs/screenshots/IAM_Anomalies.png" style="width:1000px;">
 
 #### 🌐 Network Activity
-<img src= "https://github.com/ArchAndrew/aws-devsecops-appsec-v1/blob/main/docs/screenshots/Network_Activity.png" style="width:700px;">
+<img src= "https://github.com/ArchAndrew/aws-devsecops-appsec-v1/blob/main/docs/screenshots/Network_Activity.png" style="width:1000px;">
 
 #### ⚡ Event Spike Detection
-<img src= "https://github.com/ArchAndrew/aws-devsecops-appsec-v1/blob/main/docs/screenshots/Event_Spike_Detection.png" style="width:700px;">
+<img src= "https://github.com/ArchAndrew/aws-devsecops-appsec-v1/blob/main/docs/screenshots/Event_Spike_Detection.png" style="width:1000px;">
 
 
 ---
