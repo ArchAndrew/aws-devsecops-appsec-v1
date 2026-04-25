@@ -63,8 +63,10 @@ GitHub → GitHub Actions → Trivy → ECR → Terraform → EKS → ALB → Fl
 
 :warning: All attack activity was simulated in a controlled lab environment using mock telemetry.
 
+
 📄 **Full Dashboard (Recommended View):**  
 👉 [View Full SOC Dashboard (PDF)](https://github.com/ArchAndrew/aws-devsecops-appsec-v1/blob/main/docs/screenshots/soc-dashboard.pdf)
+
 
 | Detection | Signal | Purpose |
 |---|---|---|
