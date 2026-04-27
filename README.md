@@ -1,7 +1,7 @@
-![AWS](https://img.shields.io/badge/AWS-EKS-orange)
-![Kubernetes](https://img.shields.io/badge/Kubernetes-Production-blue)
-![DevSecOps](https://img.shields.io/badge/DevSecOps-Enabled-green)
-![Splunk](https://img.shields.io/badge/Splunk-SOC-black)
+   ![AWS](https://img.shields.io/badge/AWS-EKS-orange)
+      ![Kubernetes](https://img.shields.io/badge/Kubernetes-Production-blue)
+        ![DevSecOps](https://img.shields.io/badge/DevSecOps-Enabled-green)
+          ![Splunk](https://img.shields.io/badge/Splunk-SOC-black)
 
 # AWS EKS DevSecOps AppSec Pipeline with Splunk SOC Detection
 
