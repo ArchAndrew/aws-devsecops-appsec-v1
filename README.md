@@ -1,5 +1,7 @@
 # AWS EKS DevSecOps AppSec Pipeline with Splunk SOC Detection
 
+<img src= https://github.com/ArchAndrew/aws-devsecops-appsec-v1/blob/main/docs/architecture/aws_eks_splunk_diagram.png style="width:1000px;">
+
 ---
 
 ## 🧠 Think About It
