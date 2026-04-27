@@ -1,7 +1,7 @@
 
 # AWS EKS DevSecOps AppSec Pipeline with Splunk SOC Detection
 
-<!-- CENTERED CLICKABLE BADGES -->
+
 <!-- CENTERED CLICKABLE BADGES -->
 <p align="center">
   <a href="#aws-architecture">
@@ -17,43 +17,6 @@
     <img src="https://img.shields.io/badge/Splunk-SOC-black" />
   </a>
 </p>
-
----
-
-<a id="aws-architecture"></a>
-
-## 🏗️ Architecture Overview (High-Level)
-
-Your architecture explanation here...
-
----
-
-<a id="kubernetes-runtime"></a>
-
-## ☸️ Kubernetes Runtime Layer
-
-Your EKS / Kubernetes explanation here...
-
----
-
-<a id="devsecops-pipeline"></a>
-
-## 🔄 Pipeline Flow
-
-1. Code is pushed to GitHub  
-2. GitHub Actions builds the Docker image  
-3. Trivy scans for vulnerabilities  
-4. Image pushed to ECR  
-5. Terraform provisions infrastructure  
-6. App deployed to EKS  
-
----
-
-<a id="splunk-soc"></a>
-
-## 📊 SOC Dashboard (Splunk)
-
-Your Splunk dashboards + screenshots here...
 
 ---
 
@@ -74,6 +37,7 @@ Security gaps typically occur in two places:
 This project demonstrates how to integrate **preventive security controls (DevSecOps)** with **real-time detection (SOC visibility)** in a Kubernetes environment.
 
 ---
+<a id="aws-architecture"></a>
 
 ## 🏗️ Architecture Overview (High-Level)
 
@@ -103,6 +67,8 @@ GitHub → GitHub Actions → Trivy → ECR → Terraform → EKS → ALB → Fl
 9. Detection rules trigger SOC alerts and dashboards  
 
 ---
+
+<a id="devsecops-pipeline"></a>
 
 ## 🧪 CI/CD Security Validation (Proof)
 
@@ -155,6 +121,8 @@ Once vulnerabilities are resolved, the pipeline successfully completes.
 - Event spike detection  
 
 ---
+
+<a id="splunk-soc"></a>
 
 ## 📊 SOC Dashboard (Splunk)
 
@@ -230,6 +198,7 @@ All AWS infrastructure was **fully destroyed after testing** to prevent unnecess
 - Designed a SOC-style dashboard for investigation  
 
 ---
+<a id="kubernetes-runtime"></a>
 
 # 📚 Technical Deep Dive
 
