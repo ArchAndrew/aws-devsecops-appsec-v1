@@ -2,6 +2,7 @@
 # AWS EKS DevSecOps AppSec Pipeline with Splunk SOC Detection
 
 <!-- CENTERED CLICKABLE BADGES -->
+<!-- CENTERED CLICKABLE BADGES -->
 <p align="center">
   <a href="#aws-architecture">
     <img src="https://img.shields.io/badge/AWS-EKS-orange" />
@@ -53,6 +54,8 @@ Your EKS / Kubernetes explanation here...
 ## 📊 SOC Dashboard (Splunk)
 
 Your Splunk dashboards + screenshots here...
+
+---
 
 
 <img src= https://github.com/ArchAndrew/aws-devsecops-appsec-v1/blob/main/docs/architecture/aws_eks_splunk_diagram.png style="width:1000px;">
