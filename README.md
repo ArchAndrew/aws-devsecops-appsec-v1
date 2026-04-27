@@ -57,11 +57,48 @@ GitHub → GitHub Actions → Trivy → ECR → Terraform → EKS → ALB → Fl
 
 ---
 
+## 🧪 CI/CD Security Validation (Proof)
+
+This pipeline enforces security gates using Trivy.
+
+### ❌ Failed Build (Vulnerabilities Detected)
+
+When HIGH/CRITICAL vulnerabilities are found, the pipeline is automatically stopped.
+
+![Pipeline Failure](https://github.com/ArchAndrew/aws-devsecops-appsec-v1/blob/main/docs/screenshots/Trivy_Failed_Pipeline.png)
+![Pipeline Failure](https://github.com/ArchAndrew/aws-devsecops-appsec-v1/blob/main/docs/screenshots/Trivy_Failed_High.png)
+
+- Trivy detected HIGH/CRITICAL CVEs
+- Build failed intentionally
+- Vulnerable image was NOT pushed to ECR
+
+---
+
+### ✅ Successful Build (Secure Image)
+
+Once vulnerabilities are resolved, the pipeline successfully completes.
+
+![Pipeline Success](https://github.com/ArchAndrew/aws-devsecops-appsec-v1/blob/main/docs/screenshots/Trivy_Fixed.png)
+
+- No HIGH/CRITICAL vulnerabilities detected
+- Image pushed to Amazon ECR
+- Deployment allowed to proceed
+
+---
+
+### 🔐 Security Enforcement Outcome
+
+- Prevents vulnerable containers from reaching production
+- Enforces “shift-left” security in CI/CD
+- Demonstrates real-world DevSecOps pipeline behavior
+
 ## 🔐 Security Controls
 
 ### Pre-Deployment
 - Trivy image scanning in CI/CD  
-- Build fails on HIGH/CRITICAL vulnerabilities  
+- Build fails on HIGH/CRITICAL vulnerabilities
+
+---
 
 ### Runtime
 - Auth failure detection  
