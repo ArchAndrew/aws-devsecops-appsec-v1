@@ -1,20 +1,59 @@
+
+# AWS EKS DevSecOps AppSec Pipeline with Splunk SOC Detection
+
+<!-- CENTERED CLICKABLE BADGES -->
 <p align="center">
-  <a id="aws-architecture"></a>
-  <a href="##architecture-overview-high-level">
+  <a href="#aws-architecture">
     <img src="https://img.shields.io/badge/AWS-EKS-orange" />
   </a>
-  <a href="##kubernetes-runtime-layer">
+  <a href="#kubernetes-runtime">
     <img src="https://img.shields.io/badge/Kubernetes-Production-blue" />
   </a>
-  <a href="##pipeline-flow">
+  <a href="#devsecops-pipeline">
     <img src="https://img.shields.io/badge/DevSecOps-Enabled-green" />
   </a>
-  <a href="##soc-dashboard-splunk">
+  <a href="#splunk-soc">
     <img src="https://img.shields.io/badge/Splunk-SOC-black" />
   </a>
 </p>
 
-# AWS EKS DevSecOps AppSec Pipeline with Splunk SOC Detection
+---
+
+<a id="aws-architecture"></a>
+
+## 🏗️ Architecture Overview (High-Level)
+
+Your architecture explanation here...
+
+---
+
+<a id="kubernetes-runtime"></a>
+
+## ☸️ Kubernetes Runtime Layer
+
+Your EKS / Kubernetes explanation here...
+
+---
+
+<a id="devsecops-pipeline"></a>
+
+## 🔄 Pipeline Flow
+
+1. Code is pushed to GitHub  
+2. GitHub Actions builds the Docker image  
+3. Trivy scans for vulnerabilities  
+4. Image pushed to ECR  
+5. Terraform provisions infrastructure  
+6. App deployed to EKS  
+
+---
+
+<a id="splunk-soc"></a>
+
+## 📊 SOC Dashboard (Splunk)
+
+Your Splunk dashboards + screenshots here...
+
 
 <img src= https://github.com/ArchAndrew/aws-devsecops-appsec-v1/blob/main/docs/architecture/aws_eks_splunk_diagram.png style="width:1000px;">
 
