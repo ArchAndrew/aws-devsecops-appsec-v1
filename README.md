@@ -126,6 +126,7 @@ Once vulnerabilities are resolved, the pipeline successfully completes.
 | Admin Abuse | Privileged Kubernetes actions | Detect risky admin behavior |
 | Event Spike | Sudden event volume increase | Detect bursts/scanning |
 
+
 ### Key Panels
 
 #### 🔴 Auth Failures
@@ -184,6 +185,17 @@ All AWS infrastructure was **fully destroyed after testing** to prevent unnecess
 ---
 
 # 📚 Technical Deep Dive
+
+### 🔐 IAM Roles for Service Accounts (IRSA)
+
+This project uses IRSA to provide secure, fine-grained AWS access to Kubernetes workloads.
+
+![IRSA Implementation](https://github.com/ArchAndrew/aws-devsecops-appsec-v1/blob/main/docs/screenshots/IRSA_Policy.png)
+![IRSA Implementation](https://github.com/ArchAndrew/aws-devsecops-appsec-v1/blob/main/docs/screenshots/IAM_IRSA_EKS_Policy_approved.png)
+
+- Eliminates static AWS credentials
+- Enforces least privilege at the pod level
+- Uses OIDC trust between EKS and IAM
 
 ---
 
@@ -369,6 +381,36 @@ kubectl get pods
 kubectl get ingress
 curl /health
 ```
+
+## 🧠 Architecture Decisions
+
+### Why EKS instead of ECS
+- Kubernetes is industry standard for container orchestration
+- Enables fine-grained security controls (RBAC, IRSA, network policies)
+- Aligns with enterprise environments
+
+### Why Trivy for Image Scanning
+- Lightweight and CI/CD friendly
+- Detects OS + application vulnerabilities
+- Easy integration with GitHub Actions
+
+### Why Splunk for Detection
+- Centralized log ingestion across multiple sources
+- Enables real-time detection engineering
+- Simulates enterprise SOC workflows
+
+### Why IRSA instead of static credentials
+- Eliminates hardcoded AWS credentials
+- Enforces least privilege access
+- Aligns with Zero Trust principles
+
+## 🚧 Production Improvements
+
+- Implement AWS Secrets Manager (replace Kubernetes Secrets)
+- Add Kubernetes Network Policies (east-west traffic control)
+- Integrate OPA/Gatekeeper for policy enforcement
+- Expand CI/CD to include Terraform security scanning (tfsec/checkov)
+- Add runtime threat detection (Falco)
 
 ### 📌 Final Note
 
