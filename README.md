@@ -1,5 +1,13 @@
-![AWS](https://img.shields.io/badge/AWS-EKS-orange) ![Kubernetes](https://img.shields.io/badge/Kubernetes-Production-blue)
-![DevSecOps](https://img.shields.io/badge/DevSecOps-Enabled-green)![Splunk](https://img.shields.io/badge/Splunk-SOC-black)
+<p align="center">
+  <img src="https://img.shields.io/badge/AWS-EKS-orange" />
+  <img src="https://img.shields.io/badge/Kubernetes-Production-blue" />
+  <img src="https://img.shields.io/badge/DevSecOps-Enabled-green" />
+  <img src="https://img.shields.io/badge/Splunk-SOC-black" />
+</p>
+
+<p align="center">
+  <b>End-to-End DevSecOps | Kubernetes Security | SOC Detection Engineering</b>
+</p>
 
 # AWS EKS DevSecOps AppSec Pipeline with Splunk SOC Detection
 
