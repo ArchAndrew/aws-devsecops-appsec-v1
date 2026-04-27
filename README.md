@@ -1,14 +1,14 @@
 <p align="center">
-  <a href="#architecture-overview-high-level">
+  <a href="##architecture-overview-high-level">
     <img src="https://img.shields.io/badge/AWS-EKS-orange" />
   </a>
-  <a href="#kubernetes-runtime-layer">
+  <a href="##kubernetes-runtime-layer">
     <img src="https://img.shields.io/badge/Kubernetes-Production-blue" />
   </a>
-  <a href="#pipeline-flow">
+  <a href="##pipeline-flow">
     <img src="https://img.shields.io/badge/DevSecOps-Enabled-green" />
   </a>
-  <a href="#soc-dashboard-splunk">
+  <a href="##soc-dashboard-splunk">
     <img src="https://img.shields.io/badge/Splunk-SOC-black" />
   </a>
 </p>
