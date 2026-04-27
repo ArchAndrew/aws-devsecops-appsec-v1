@@ -1,4 +1,5 @@
 <p align="center">
+  <a id="aws-architecture"></a>
   <a href="##architecture-overview-high-level">
     <img src="https://img.shields.io/badge/AWS-EKS-orange" />
   </a>
