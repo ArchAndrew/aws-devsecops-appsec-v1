@@ -420,6 +420,16 @@ curl /health
 - Enforces least privilege access
 - Aligns with Zero Trust principles
 
+---
+
+### 🚧 Future Enhancements (Detection Maturity)
+Add context-aware detection (user behavior, asset criticality)
+Implement cross-source correlation rules (auth + network + infra signals)
+Reduce false positives using risk-based scoring
+Integrate threat intel for enriched alerting
+
+---
+
 ## 🚧 Production Improvements
 
 - Implement AWS Secrets Manager (replace Kubernetes Secrets)
@@ -427,6 +437,8 @@ curl /health
 - Integrate OPA/Gatekeeper for policy enforcement
 - Expand CI/CD to include Terraform security scanning (tfsec/checkov)
 - Add runtime threat detection (Falco)
+
+---
 
 ### 📌 Final Note
 
