@@ -422,16 +422,12 @@ curl /health
 
 ---
 
-### 🚧 Future Enhancements (Detection Maturity)
-Add context-aware detection (user behavior, asset criticality)
-Implement cross-source correlation rules (auth + network + infra signals)
-Reduce false positives using risk-based scoring
-Integrate threat intel for enriched alerting
+## 🚧 Future Enhancements + Production Improvements (Detection Maturity)
 
----
-
-## 🚧 Production Improvements
-
+- Add context-aware detection (user behavior, asset criticality)
+- Implement cross-source correlation rules (auth + network + infra signals)
+- Reduce false positives using risk-based scoring
+- Integrate threat intel for enriched alerting
 - Implement AWS Secrets Manager (replace Kubernetes Secrets)
 - Add Kubernetes Network Policies (east-west traffic control)
 - Integrate OPA/Gatekeeper for policy enforcement
