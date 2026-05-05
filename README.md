@@ -446,4 +446,4 @@ This project simulates a real-world DevSecOps + SOC environment, combining:
 - Operational visibility
 
 
-thee_architect_was_here
+_Architecture by: thee_architect_was_here_
